@@ -19,9 +19,10 @@ For any feature or user story to be considered "Done", it must satisfy the follo
 - [ ] **Integration Tests**: The feature works correctly with connected components (e.g., API calls update the UI).
 - [ ] **Manual Verification**: The feature has been manually tested in the browser against the Wireframes.
 
-### 1.3 Documentation
-- [ ] Relevant documentation (SDD, API Spec) is updated if the implementation diverged.
-- [ ] Code is commented where logic is complex.
+### 1.4 Test Reporting (MANDATORY)
+- [ ] **Automated Reports**: A consolidated test report (HTML/JSON) must be generated for every test run.
+- [ ] **Evidence**: E2E tests must include screenshots and execution logs (traces) for every step.
+- [ ] **Coverage**: Unit tests must output a code coverage report.
 
 ---
 
@@ -31,6 +32,7 @@ For any feature or user story to be considered "Done", it must satisfy the follo
 *Focus: Component rendering, User Interaction, State Management*
 
 *   **Tools**: Vitest, React Testing Library (RTL)
+*   **Reporting**: Vitest UI / HTML Report
 *   **Scope**:
     *   **Atomic Components**: Verify buttons, inputs, and cards render props correctly.
     *   **Screen Components**: Verify `InputScreen` validates form data before submission.
@@ -47,6 +49,7 @@ For any feature or user story to be considered "Done", it must satisfy the follo
 *Focus: Data Contract, Error Handling, Response Format*
 
 *   **Tools**: Vitest (mocking `fetch`), Postman (for real API checks)
+*   **Reporting**: Vitest HTML Report
 *   **Scope**:
     *   **Request Validation**: Ensure the client sends the correct JSON structure (`heroName`, `targetWords`, `genre`).
     *   **Response Parsing**: Ensure the client correctly parses the LLM's JSON response.
@@ -58,7 +61,8 @@ For any feature or user story to be considered "Done", it must satisfy the follo
 ### 2.3 End-to-End (E2E) Testing
 *Focus: Critical User Journeys, Multi-screen flows*
 
-*   **Tools**: Playwright or Cypress (Future implementation), Manual Walkthrough (Current)
+*   **Tools**: **Playwright** (Required)
+*   **Reporting**: Playwright HTML Report (with Screenshots, Video, and Trace)
 *   **Scope**:
     *   **Full Game Loop**: Start -> Story -> Quiz -> Result -> Restart.
     *   **Interactive Flow**: Start -> Story -> Quiz -> Action Input -> Next Story.
@@ -84,6 +88,6 @@ For any feature or user story to be considered "Done", it must satisfy the follo
 ---
 
 ## 3. Test Execution Plan
-1.  **Pre-Commit**: Run `npm run test` (Unit/Component tests).
-2.  **Feature Completion**: Perform Manual Verification against Use Cases.
-3.  **Release**: Run full E2E walkthrough.
+1.  **Pre-Commit**: Run `npm run test` (Unit/Component tests) -> Check Coverage Report.
+2.  **Feature Completion**: Run `npm run test:e2e` (Playwright) -> Review HTML Report with Screenshots.
+3.  **Release**: All tests must pass with 100% report generation.
