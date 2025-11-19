@@ -45,35 +45,6 @@ Generates a personalized story and a quiz question based on user input.
 | `previousContext` | `string` | No | Summary or full text of the previous chapter (for continuity). |
 | `userAction` | `string` | No | The user's input for what happens next. |
 
-#### Response Body (Success - 200 OK)
-```json
-{
-  "status": "success",
-  "data": {
-    "title": "Cheolsu and the Sword of Abstraction",
-    "content": "Cheolsu picked up the sword. It was an **Abstraction** of power...",
-    "quiz": {
-      "question": "What did Cheolsu use to simplify the monster?",
-      "options": ["Variable", "Abstraction", "Algorithm"],
-      "answer": "Abstraction"
-    }
-  }
-}
-```
-
-#### Response Body (Error)
-```json
-{
-  "status": "error",
-  "code": "INVALID_INPUT",
-  "message": "Target words must contain exactly 3 items."
-}
-```
-
----
-
-## 3. Error Codes
-
 | Code | HTTP Status | Description |
 | :--- | :--- | :--- |
 | `INVALID_INPUT` | 400 | Missing or invalid parameters in request body. |

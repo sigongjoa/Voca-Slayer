@@ -59,6 +59,8 @@ describe('LLM Service - generateStory', () => {
 
         expect(result).toEqual(mockResponse);
         expect(result.title).toBeDefined();
+        expect(result.summary).toBeDefined();
+        expect(result.image_prompt).toBeDefined();
         expect(result.quiz).toBeDefined();
     });
 

@@ -16,6 +16,8 @@
 {
   "title": "String (Chapter Title)",
   "content": "String (Story text with <b>tags</b>)",
+  "summary": "String (CRITICAL: A 3-sentence summary of this chapter to be used as context for the NEXT chapter.)",
+  "image_prompt": "String (An English description of the current scene to generate an illustration. Style: Anime/Webtoon)",
   "quiz": {
     "question": "String (Related to this chapter)",
     "options": ["String", "String", "String"],

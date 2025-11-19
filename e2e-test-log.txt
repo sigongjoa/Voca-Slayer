@@ -1,0 +1,60 @@
+
+> voca-slayer@0.0.0 test:e2e
+> playwright test
+
+
+Running 4 tests using 4 workers
+
+[1A[2K[1/4] [chromium] › e2e/app.spec.js:4:5 › Word Master - Input Screen › should display the input screen correctly
+[1A[2K[2/4] [chromium] › e2e/app.spec.js:36:5 › Word Master - Input Screen › should fill form and submit
+[1A[2K[3/4] [chromium] › e2e/app.spec.js:20:5 › Word Master - Input Screen › should validate empty inputs
+[1A[2K[chromium] › e2e/app.spec.js:4:5 › Word Master - Input Screen › should display the input screen correctly
+✓ Initial screen loaded successfully
+
+[1A[2K[chromium] › e2e/app.spec.js:20:5 › Word Master - Input Screen › should validate empty inputs
+✓ Validation working correctly
+
+[1A[2K[4/4] [chromium] › e2e/app.spec.js:70:5 › Word Master - Input Screen › should switch between genres
+[1A[2K[chromium] › e2e/app.spec.js:36:5 › Word Master - Input Screen › should fill form and submit
+✓ Form submission completed
+
+[1A[2KHero Name: 철수
+
+[1A[2KWords: 추상화, 변수, 알고리즘
+
+[1A[2KGenre: Fantasy
+
+[1A[2K  1) [chromium] › e2e/app.spec.js:70:5 › Word Master - Input Screen › should switch between genres ─
+
+    [31mTest timeout of 30000ms exceeded.[39m
+
+    Error: locator.click: Test timeout of 30000ms exceeded.
+    Call log:
+    [2m  - waiting for getByRole('button', { name: /sf/i })[22m
+
+
+      76 |         await page.screenshot({ path: 'e2e/screenshots/07-genre-fantasy.png', fullPage: true });
+      77 |
+    > 78 |         await page.getByRole('button', { name: /sf/i }).click();
+         |                                                         ^
+      79 |         await page.screenshot({ path: 'e2e/screenshots/08-genre-sf.png', fullPage: true });
+      80 |
+      81 |         await page.getByRole('button', { name: /horror/i }).click();
+        at /mnt/d/progress/Voca Slayer/e2e/app.spec.js:78:57
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/app-Word-Master---Input-Screen-should-switch-between-genres-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/app-Word-Master---Input-Screen-should-switch-between-genres-chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/app-Word-Master---Input-Screen-should-switch-between-genres-chromium/error-context.md
+
+
+[1A[2K  1 failed
+    [chromium] › e2e/app.spec.js:70:5 › Word Master - Input Screen › should switch between genres ──
+  3 passed (41.3s)
+
+[36m  Serving HTML report at http://localhost:46413. Press Ctrl+C to quit.[39m
