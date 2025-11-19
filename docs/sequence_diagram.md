@@ -52,14 +52,28 @@ sequenceDiagram
             Client->>Client: Play Attack Animation
             Client->>Client: Reduce Boss Health to 0
             Client-->>User: Show Victory Message
-            Client->>Client: Set GameState to RESULT (Grade S)
+            
+            Note over User, Client: 5. Interactive Continuation Phase
+            Client-->>User: Show "Action Input" Screen
+            User->>Client: Enter Next Action (e.g. "Go deeper")
+            Client->>Client: Set GameState to LOADING
+            
+            Client->>API: POST /v1/chat/completions (Context + User Action)
+            activate API
+            API-->>Client: JSON Response { Next Chapter Story, Quiz }
+            deactivate API
+            
+            Client->>Client: Parse JSON
+            Client->>Client: Set GameState to STORY (Loop back to Phase 3)
+            
         else Incorrect Answer
             Client->>Client: Play Damage Animation
             Client-->>User: Show Try Again / Hint
-            Client->>Client: Set GameState to RESULT (Grade B)
+            Client->>Client: Set GameState to RESULT (Grade B) or Retry
         end
         
-        Note over User, Client: 5. Result Phase
+        Note over User, Client: 6. End Game Phase (Optional)
+        User->>Client: Click "End Game" (from Action Screen)
         Client-->>User: Show Score & Word Collection
         User->>Client: Click "Restart"
         Client->>Client: Reset State -> Return to Input Screen
